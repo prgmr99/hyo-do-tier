@@ -6,6 +6,7 @@ import { useQuizStore } from "@/store/useQuizStore";
 import { calculateResult } from "@/lib/calculateResult";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useKakaoShare } from "@/hooks/useKakaoShare";
 
 export default function ResultPage() {
   const router = useRouter();
@@ -14,6 +15,9 @@ export default function ResultPage() {
 
   // 1. 결과 계산 (메모이제이션)
   const result = useMemo(() => calculateResult(scores, flags), [scores, flags]);
+  const totalScore = scores.interest + scores.intimacy + scores.expression;
+
+  const { shareKakao } = useKakaoShare(result.id, result.title, totalScore);
 
   // 2. 예외 처리: 퀴즈를 안 풀고 접근했으면 홈으로 보냄
   useEffect(() => {
@@ -88,8 +92,11 @@ export default function ResultPage() {
       </div>
 
       {/* 5. 액션 버튼 */}
+      {/* TODO: 부모님께 공유하기 */}
       <div className="w-full space-y-3 pt-4">
-        <button className="w-full bg-[#FEE500] text-[#191919] py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-all text-lg">
+        <button className="w-full bg-[#FEE500] text-[#191919] py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-all text-lg"
+            onClick={shareKakao}
+        >
           <Share2 className="w-5 h-5" /> 결과 공유하기
         </button>
         
