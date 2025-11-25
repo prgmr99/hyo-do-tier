@@ -1,7 +1,7 @@
 # 💯 2025학년도 대국민 효도능력시험 (Hyo-Tier)
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Next.js-14.0-black?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img src="https://img.shields.io/badge/Zustand-Bear-orange?style=for-the-badge&logo=react&logoColor=white" />
