@@ -3,13 +3,13 @@
 import { Home, RotateCcw, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useKakaoShare } from '@/hooks/useKakaoShare';
 import { calculateResult } from '@/lib/calculateResult';
 import { RESULTS } from '@/lib/resultData';
 import { useQuizStore } from '@/store/useQuizStore';
 
-export default function ResultPage() {
+function ResultContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { scores: storeScores, flags, resetQuiz, currentStep } = useQuizStore();
@@ -162,6 +162,20 @@ export default function ResultPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          로딩 중...
+        </div>
+      }
+    >
+      <ResultContent />
+    </Suspense>
   );
 }
 
