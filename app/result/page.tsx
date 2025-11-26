@@ -69,7 +69,7 @@ function ResultContent() {
 
         {/* 1등급 도장 (유니콘일 때만 1등급, 나머지는 재치있게 변경 가능하지만 일단 통일) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="border-[6px] border-grading text-grading rounded-xl px-6 py-2 text-6xl font-black font-serif opacity-0 animate-stamp-bang -rotate-12 whitespace-nowrap bg-paper/90 backdrop-blur-sm shadow-xl">
+          <div className="border-[6px] border-grading text-grading rounded-xl px-6 py-2 text-6xl font-black font-serif opacity-0 animate-stamp-move whitespace-nowrap bg-paper/90 backdrop-blur-sm shadow-xl">
             {result.id === 'UNICORN'
               ? '1등급'
               : result.id === 'LODGER'
