@@ -6,12 +6,12 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: '효도티어',
-    url: 'https://hyo-tier.vercel.app',
+    url: process.env.NEXT_PUBLIC_DOMAIN_URL,
     description:
       '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://hyo-tier.vercel.app/search?q={search_term_string}',
+      target: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };

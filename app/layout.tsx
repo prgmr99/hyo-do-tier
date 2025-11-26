@@ -4,7 +4,7 @@ import KakaoScript from '@/components/KakaoScript';
 import { sans, serif } from './fonts';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hyo-tier.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL as string),
   title: {
     default: '효도티어 | 부모님 탐구영역',
     template: '%s | 효도티어',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: '효도티어 | 부모님 탐구영역',
     description:
       '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
-    url: 'https://hyo-tier.vercel.app',
+    url: process.env.NEXT_PUBLIC_DOMAIN_URL,
     siteName: '효도티어',
     locale: 'ko_KR',
     type: 'website',
@@ -61,7 +61,10 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://hyo-tier.vercel.app',
+    canonical: process.env.NEXT_PUBLIC_DOMAIN_URL,
+  },
+  verification: {
+    google: '4QaYZkeXK8b9g5gYGiTcVhUUHtfcjjAv5iUFgiEJTf4',
   },
 };
 

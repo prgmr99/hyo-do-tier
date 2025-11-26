@@ -14,7 +14,7 @@ export const useKakaoShare = (
     const shareUrl =
       typeof window !== 'undefined'
         ? window.location.origin
-        : 'https://hyo-tier.vercel.app';
+        : process.env.NEXT_PUBLIC_DOMAIN_URL;
 
     // 동적 썸네일 URL 생성
     const imageUrl = `${shareUrl}/api/og?type=${resultType}&score=${score}`;
