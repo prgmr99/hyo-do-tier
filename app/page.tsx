@@ -30,28 +30,9 @@ export default function Home() {
     router.push('/result?result=UNFILIAL');
   };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: '효도티어',
-    url: process.env.NEXT_PUBLIC_DOMAIN_URL,
-    description:
-      '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
-  };
-
   return (
     <main className="flex flex-col min-h-screen p-6 text-center animate-fade-in">
       <section className="flex flex-col items-center justify-center w-full pt-16">
-        <script
-          type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         {/* 상단: 시험 정보 헤더 */}
         <div className="w-full border-b-2 border-ink pb-4 mb-4">
           <p className="text-sm font-serif font-bold tracking-widest mb-1">

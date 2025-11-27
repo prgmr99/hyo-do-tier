@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import KakaoScript from '@/components/KakaoScript';
 import { sans, serif } from './fonts';
@@ -81,9 +82,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '효도티어',
+    url: process.env.NEXT_PUBLIC_DOMAIN_URL,
+    description:
+      '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
-    <html lang="ko" className={`${serif.variable} ${sans.variable}`}>
+    <html
+      lang="ko"
+      className={`${serif.variable} ${sans.variable}`}
+      suppressHydrationWarning
+    >
       <body className="bg-stone-200 flex justify-center min-h-screen font-sans antialiased">
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* 모바일 뷰 컨테이너 
           - max-w-[480px]: 모바일 너비 제한
           - bg-paper: 갱지 배경색 (Tailwind v4 변수)
