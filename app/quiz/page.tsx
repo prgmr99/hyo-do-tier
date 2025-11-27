@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation'; // 라우터
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import ProgressBar from '@/components/quiz/ProgressBar';
 import { type Effects, QUESTIONS } from '@/lib/constants'; // 데이터 불러오기
 import { useQuizStore } from '@/store/useQuizStore'; // 스토어 불러오기
@@ -23,7 +23,7 @@ const variants = {
   }),
 };
 
-export default function QuizPage() {
+function QuizContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [direction, setDirection] = useState(1); // 1: 다음, -1: 이전
@@ -141,5 +141,19 @@ export default function QuizPage() {
         </AnimatePresence>
       </div>
     </main>
+  );
+}
+
+export default function QuizPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          로딩 중...
+        </div>
+      }
+    >
+      <QuizContent />
+    </Suspense>
   );
 }
