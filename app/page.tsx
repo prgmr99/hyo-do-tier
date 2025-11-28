@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen p-6 text-center animate-fade-in">
-      <section className="flex flex-col items-center justify-center w-full pt-16">
+      <section className="flex flex-col items-center justify-center w-full pt-8">
         {/* 상단: 시험 정보 헤더 */}
         <div className="w-full border-b-2 border-ink pb-4 mb-4">
           <p className="text-sm font-serif font-bold tracking-widest mb-1">
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center gap-3 text-ink font-serif">
             {/* 성명 입력 */}
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg">성명:</span>
+              <span className="font-bold text-m">성명:</span>
               <input
                 type="text"
                 placeholder="홍길동"
@@ -84,7 +84,7 @@ export default function Home() {
             {/* 수험번호 입력 */}
             <div className="flex flex-col items-center gap-1">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg">수험번호:</span>
+                <span className="font-bold text-m">수험번호:</span>
                 <div className="flex items-center gap-1">
                   <input
                     type="text"
@@ -94,7 +94,7 @@ export default function Home() {
                     onChange={(e) =>
                       setFatherDob(e.target.value.replace(/[^0-9]/g, ''))
                     }
-                    className="w-24 bg-transparent border-b-2 border-ink text-center text-lg tracking-widest placeholder:text-ink/20 focus:outline-none focus:border-grading transition-colors"
+                    className="w-24 bg-transparent border-b-2 border-ink text-center text-m tracking-widest placeholder:text-ink/20 focus:outline-none focus:border-grading transition-colors"
                   />
                   <span className="font-bold">-</span>
                   <input
@@ -105,7 +105,7 @@ export default function Home() {
                     onChange={(e) =>
                       setMotherDob(e.target.value.replace(/[^0-9]/g, ''))
                     }
-                    className="w-24 bg-transparent border-b-2 border-ink text-center text-lg tracking-widest placeholder:text-ink/20 focus:outline-none focus:border-grading transition-colors"
+                    className="w-24 bg-transparent border-b-2 border-ink text-center text-m tracking-widest placeholder:text-ink/20 focus:outline-none focus:border-grading transition-colors"
                   />
                 </div>
               </div>
