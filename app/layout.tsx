@@ -3,6 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 import Footer from '@/components/Footer';
 import GoogleAdSense from '@/components/GoogleAdSense';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import KakaoScript from '@/components/KakaoScript';
 import { sans, serif } from './fonts';
 
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험. 지금 바로 응시하고 효도 등급을 확인하세요!',
+  applicationName: '효도티어',
   keywords: [
     '효도티어',
     '부모님 탐구영역',
@@ -28,6 +30,16 @@ export const metadata: Metadata = {
   authors: [{ name: 'Hyo-Tier Committee' }],
   creator: 'Hyo-Tier Committee',
   publisher: 'Hyo-Tier Committee',
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  appleWebApp: {
+    capable: true,
+    title: '효도티어',
+    statusBarStyle: 'default',
+  },
   robots: {
     index: true,
     follow: true,
@@ -121,6 +133,7 @@ export default function RootLayout({
           <Footer />
         </div>
 
+        <GoogleAnalytics />
         <KakaoScript />
         <GoogleAdSense />
       </body>
