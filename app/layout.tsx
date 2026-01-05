@@ -143,6 +143,28 @@ export default function RootLayout({
     },
   };
 
+  // Organization schema - Google이 사이트 소유자를 인식하도록 함
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '효도티어',
+    alternateName: '효도티어 위원회',
+    url: process.env.NEXT_PUBLIC_DOMAIN_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/icon-512.png`,
+      width: 512,
+      height: 512,
+    },
+    description:
+      'MZ세대를 위한 재미있고 의미있는 효도 자가진단 서비스. 2025학년도 대국민 효도능력시험을 통해 부모님과의 관계를 진단합니다.',
+    foundingDate: '2025',
+    sameAs: [
+      // 소셜 미디어 링크가 있으면 여기에 추가
+      // 'https://www.instagram.com/hyo_tier',
+      // 'https://www.facebook.com/hyotier',
+    ],
+  };
   return (
     <html
       lang="ko"
@@ -161,6 +183,14 @@ export default function RootLayout({
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
           dangerouslySetInnerHTML={{ __html: JSON.stringify(quizSchema) }}
+        />
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
         {/* 모바일 뷰 컨테이너 
           - max-w-[480px]: 모바일 너비 제한
