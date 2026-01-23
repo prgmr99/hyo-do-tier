@@ -60,8 +60,7 @@ function formatBriefingMessage(
   });
   
   let message = `📊 *FinBrief - 오늘의 재테크 브리핑*\n`;
-  message += `${today}\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  message += `${today}\n\n`;
   
   // 주요 뉴스 3개
   analysis.topNews.forEach((news, idx) => {
@@ -70,7 +69,11 @@ function formatBriefingMessage(
     message += `*${idx + 1}. ${news.title}* ${emoji}\n\n`;
     message += `${news.summary}\n\n`;
     message += `💡 *왜 중요한가?*\n${news.reason}\n\n`;
-    message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+    
+    // 마지막 뉴스가 아니면 줄바꿈 추가
+    if (idx < analysis.topNews.length - 1) {
+      message += `\n`;
+    }
   });
   
   // 오늘의 키워드
@@ -83,8 +86,7 @@ function formatBriefingMessage(
   
   // 제휴 링크 (옵션)
   if (affiliateLinks && affiliateLinks.length > 0) {
-    message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
-    message += `💰 *추천 정보*\n`;
+    message += `\n💰 *추천 정보*\n`;
     affiliateLinks.forEach(link => {
       message += `• [${link.text}](${link.url})\n`;
     });
@@ -92,8 +94,7 @@ function formatBriefingMessage(
   }
   
   // 푸터
-  message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `_FinBrief | AI가 엄선한 재테크 뉴스_\n`;
+  message += `\n_FinBrief | AI가 엄선한 재테크 뉴스_\n`;
   message += `_읽기 시간: 약 30초_`;
   
   return message;
