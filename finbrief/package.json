@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:rss": "ts-node src/collectors/rss-collector.ts",
+    "test:ai": "ts-node -r dotenv/config src/analyzers/gemini-analyzer.ts",
+    "test:integration": "ts-node -r dotenv/config src/test-integration.ts",
     "send-briefing": "ts-node src/main.ts",
     "dev": "ts-node src/main.ts",
     "build": "tsc"
@@ -19,6 +21,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
     "rss-parser": "^3.13.0"
