@@ -1,0 +1,50 @@
+name: Daily FinBrief
+
+on:
+  # 매일 한국시간 오전 8시 실행 (UTC 23:00 = KST 08:00)
+  schedule:
+    - cron: '0 23 * * *'
+  
+  # 수동 실행 옵션
+  workflow_dispatch:
+
+jobs:
+  send-daily-briefing:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: finbrief/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: finbrief
+        run: npm ci
+      
+      - name: Run daily briefing
+        working-directory: finbrief
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: npm run send-briefing
+      
+      - name: Commit analysis results
+        working-directory: finbrief
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: Add daily briefing results $(date +'%Y-%m-%d')"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
