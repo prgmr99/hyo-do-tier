@@ -1,39 +1,54 @@
-# 💯 Hyo-Domain Monorepo
+# 🌌 Yeomniverse
 
 <div align="center">
+  <h1>Yeomniverse</h1>
+  <p><strong>Seungjun Yeom's Omniverse of Digital Services</strong></p>
+  
   <img src="https://img.shields.io/badge/Turborepo-2.7-blue?style=for-the-badge&logo=turborepo&logoColor=white" />
   <img src="https://img.shields.io/badge/pnpm-9.0-yellow?style=for-the-badge&logo=pnpm&logoColor=white" />
   <img src="https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white" />
-  <br/>
   
-  <br/>
+  <br/><br/>
   
-  <h3>🏗️ Turborepo Monorepo Architecture</h3>
   <p>
-    A scalable monorepo structure for managing multiple services<br/>
-    under a single domain with shared packages and optimized builds.
+    A scalable monorepo architecture powering multiple digital services<br/>
+    Built with Turborepo, pnpm workspaces, and modern web technologies
   </p>
 </div>
 
 ---
 
-## 📁 Project Structure
+## 🌟 Featured Services
+
+### 💯 [Hyo-Tier](https://hyo-tier.vercel.app)
+**효도능력시험 (Filial Piety Test)**
+- 2025학년도 대국민 효도능력시험
+- 14-question quiz testing parent-child relationships
+- 8 unique personality type results
+- Viral KakaoTalk sharing integration
+- Mobile-first responsive design
+
+**Tech:** Next.js 16, React 19, Tailwind CSS v4, Zustand
+
+---
+
+## 📁 Monorepo Structure
 
 ```
-hyo-domain/
+yeomniverse/
 ├── apps/
-│   └── web/                  # Main Next.js application (hyo-tier)
+│   └── web/                  # Hyo-Tier service
 ├── packages/
 │   ├── ui/                   # Shared UI components
-│   ├── utils/                # Shared utilities and constants
-│   └── tsconfig/             # Shared TypeScript configurations
-├── turbo.json                # Turborepo pipeline configuration
-├── pnpm-workspace.yaml       # pnpm workspace configuration
-└── package.json              # Root package configuration
+│   ├── utils/                # Shared utilities
+│   └── tsconfig/             # Shared TypeScript configs
+├── turbo.json                # Turborepo pipeline
+├── pnpm-workspace.yaml       # Workspace configuration
+└── package.json              # Root configuration
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
@@ -43,163 +58,132 @@ hyo-domain/
 ### Installation
 
 ```bash
-# Install dependencies for all workspaces
+# Clone repository
+git clone https://github.com/prgmr99/yeomniverse.git
+cd yeomniverse
+
+# Install dependencies
 pnpm install
 ```
-
-## 📝 Available Commands
 
 ### Development
 
 ```bash
-# Run all dev servers
+# Run all services
 pnpm dev
 
-# Run dev server for specific app
+# Run specific service
 pnpm turbo dev --filter=@hyo/web
 ```
 
 ### Build
 
 ```bash
-# Build all apps and packages
+# Build all services
 pnpm build
 
-# Build specific app
+# Build specific service
 pnpm turbo build --filter=@hyo/web
 ```
 
-### Code Quality
-
-```bash
-# Lint all packages
-pnpm lint
-
-# Format all code
-pnpm format
-```
-
-### Clean
-
-```bash
-# Clean all build outputs and node_modules
-pnpm clean
-```
-
-## 📦 Packages
-
-### @hyo/web
-Main Next.js application featuring the 효도티어 (Filial Piety Test) service.
-
-- **Path:** `apps/web/`
-- **Tech:** Next.js 16, React 19, Tailwind CSS v4
-- **Deploy:** Vercel
+## 📦 Shared Packages
 
 ### @hyo/ui
-Shared UI component library.
+Shared UI component library used across all services.
 
-- **Path:** `packages/ui/`
-- **Components:** Footer, Loading, GoogleAdSense, GoogleAnalytics, KakaoScript
+**Components:**
+- Footer - Application footer with policy links
+- Loading - Loading spinner animation
+- GoogleAdSense - AdSense integration
+- GoogleAnalytics - Analytics tracking
+- KakaoScript - Kakao SDK loader
 
 ### @hyo/utils
-Shared utilities and helper functions.
+Shared utilities and constants.
 
-- **Path:** `packages/utils/`  
-- **Utilities:** QUESTIONS, Effects type, constants
+**Exports:**
+- Quiz question data (QUESTIONS)
+- Effect types
+- Common constants
 
 ### @hyo/tsconfig
-Shared TypeScript configurations.
+Shared TypeScript configurations for consistency.
 
-- **Path:** `packages/tsconfig/`
-- **Configs:** base.json, nextjs.json, react-library.json
+**Configs:**
+- `base.json` - Base TypeScript settings
+- `nextjs.json` - Next.js specific
+- `react-library.json` - React libraries
 
-## 🔧 Adding a New App
+## 🌐 Deployment
 
-1. Create app directory:
+Each service is independently deployable to Vercel:
+
+- **Hyo-Tier**: `apps/web` → Production deployment
+- Root Directory: `apps/web`
+- Build Command: `cd ../.. && pnpm turbo build --filter=@hyo/web`
+
+See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed instructions.
+
+## 🏗️ Architecture Benefits
+
+✅ **Code Sharing** - Reuse components across all services  
+✅ **Fast Builds** - Turborepo caching & parallel execution  
+✅ **Type Safety** - Shared TypeScript configurations  
+✅ **Scalable** - Easy to add new services  
+✅ **Developer Experience** - Single command for everything  
+
+## 🔧 Adding New Services
+
 ```bash
-mkdir apps/my-new-app
-```
+# Create new app
+mkdir apps/my-service
 
-2. Create `package.json`:
-```json
+# Add dependencies
 {
-  "name": "@hyo/my-new-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@hyo/my-service",
   "dependencies": {
     "@hyo/ui": "workspace:*",
     "@hyo/utils": "workspace:*"
   }
 }
-```
 
-3. Install dependencies:
-```bash
+# Install
 pnpm install
 ```
 
-4. Add to Turborepo tasks as needed.
+## 📚 Documentation
 
-## 🌐 Deployment
+- [Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md)
+- [Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)
+- [Monorepo Migration Walkthrough](/.gemini/antigravity/brain/*/walkthrough.md)
 
-### Vercel Configuration
-
-**Important:** For monorepo deployment, update your Vercel project settings:
-
-1. **Root Directory:** `apps/web`
-2. **Build Command:** `cd ../.. && pnpm turbo build --filter=@hyo/web`
-3. **Install Command:** `pnpm install`
-4. **Output Directory:** `.next`
-
-📖 **Detailed instructions:** See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
-
-### Quick Deploy
+## 🛠️ Available Commands
 
 ```bash
-# Commit and push
-git add .
-git commit -m "feat: monorepo migration"
-git push origin main
+pnpm dev              # Run all dev servers
+pnpm build            # Build all services
+pnpm lint             # Lint all packages
+pnpm format           # Format all code
+pnpm clean            # Clean build outputs
 ```
 
-Vercel will automatically detect and deploy (after settings update).
+## 🎯 Future Services
 
-## 🏛️ Architecture Benefits
+Coming soon to the Yeomniverse:
+- Admin Dashboard
+- Community Platform
+- Analytics Dashboard
+- More creative projects...
 
-✅ **Code Sharing** - Reuse components, utilities, and types across all apps  
-✅ **Fast Builds** - Turborepo's intelligent caching and parallel execution  
-✅ **Type Safety** - Shared TypeScript configurations ensure consistency  
-✅ **Scalable** - Easy to add new services/apps to the same domain  
-✅ **Developer Experience** - Single command to run/build all apps  
+## 📄 License
 
-## 📚 Learn More
-
-- [Turborepo Documentation](https://turbo.build/repo/docs)
-- [pnpm Workspaces](https://pnpm.io/workspaces)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md)
-
----
-
-## 💯 Main Service: 효도능력시험 (Hyo-Tier)
-
-**효도티어(Hyo-Tier)** is a viral quiz service that tests how well you know your parents.
-
-* **Concept:** 2025 Korean SAT exam design (Newtro aesthetic)
-* **Target:** Digital natives (Mobile First)
-* **Goal:** Viral sharing via KakaoTalk and family communication
-
-### Key Features
-
-- 📝 14 questions testing relationship depth
-- 📊 8 unique personality type results
-- 💌 KakaoTalk sharing integration
-- 📱 Mobile-optimized experience
-
-[👉 Take the Test](https://hyo-tier.vercel.app)
+MIT License - See [LICENSE](./LICENSE) file
 
 ---
 
 <div align="center">
-  Built with ❤️ using Turborepo · Next.js · TypeScript
+  <p>Built with ❤️ by Seungjun Yeom</p>
+  <p>Powered by Turborepo · Next.js · TypeScript</p>
+  
+  **🌌 Welcome to the Yeomniverse 🌌**
 </div>
