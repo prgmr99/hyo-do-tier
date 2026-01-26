@@ -128,14 +128,20 @@ function ValueProposition() {
   return (
     <section className="py-section px-6 bg-white/50 backdrop-blur-sm">
       <div className="max-w-content mx-auto text-center">
-        <StaggerContainer staggerDelay={0.15} className="space-y-4">
+        <StaggerContainer staggerDelay={0.15} className="space-y-6">
           <StaggerItem>
-            <p className="text-section text-finbrief-black">
+            <p
+              className="font-semibold text-finbrief-black"
+              style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1.2 }}
+            >
               AI가 <span className="text-gradient">100개의 뉴스</span>를 읽고,
             </p>
           </StaggerItem>
           <StaggerItem>
-            <p className="text-section text-finbrief-black">
+            <p
+              className="font-semibold text-finbrief-black"
+              style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1.2 }}
+            >
               당신에게 꼭 필요한 <span className="text-gradient">3가지</span>만.
             </p>
           </StaggerItem>
@@ -177,10 +183,13 @@ function FeatureShowcase() {
     <section className="py-section px-6 bg-finbrief-black">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
-          <p className="text-finbrief-gray-500 text-sm font-medium tracking-wide uppercase mb-4">
+          <p className="text-finbrief-gray-500 text-base font-medium tracking-wide uppercase mb-4">
             핵심 기능
           </p>
-          <h2 className="text-section text-finbrief-white mb-element">
+          <h2
+            className="text-finbrief-white mb-element font-semibold"
+            style={{ fontSize: 'clamp(36px, 5vw, 48px)', lineHeight: 1.15 }}
+          >
             더 스마트하게,<br />더 빠르게.
           </h2>
         </ScrollReveal>
@@ -219,10 +228,13 @@ function HowItWorks() {
     <section className="py-section px-6 bg-white/50 backdrop-blur-sm">
       <div className="max-w-content mx-auto">
         <ScrollReveal className="text-center mb-element">
-          <p className="text-finbrief-gray-500 text-sm font-medium tracking-wide uppercase mb-4">
+          <p className="text-finbrief-gray-500 text-base font-medium tracking-wide uppercase mb-4">
             작동 방식
           </p>
-          <h2 className="text-section text-finbrief-black">
+          <h2
+            className="text-finbrief-black font-semibold"
+            style={{ fontSize: '36px' }}
+          >
             이렇게 동작해요
           </h2>
         </ScrollReveal>
@@ -231,13 +243,16 @@ function HowItWorks() {
           {steps.map((step, index) => (
             <StaggerItem key={index}>
               <div className="flex items-start gap-6 mb-12 last:mb-0">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-finbrief-gray-100 flex items-center justify-center">
-                  <span className="text-finbrief-blue-500 font-bold text-lg">
+                <div className="flex-shrink-0 w-18 h-18 rounded-full bg-finbrief-gray-100 flex items-center justify-center" style={{ width: '72px', height: '72px' }}>
+                  <span className="text-finbrief-blue-500 font-bold text-xl">
                     {step.number}
                   </span>
                 </div>
-                <div className="pt-4">
-                  <p className="text-feature text-finbrief-black">
+                <div className="pt-5">
+                  <p
+                    className="text-finbrief-black font-medium"
+                    style={{ fontSize: 'clamp(20px, 3vw, 28px)' }}
+                  >
                     {step.title}
                   </p>
                 </div>
@@ -278,21 +293,21 @@ function BriefingSample() {
   const sentimentStyles = {
     bullish: {
       label: 'BULLISH',
-      color: 'text-finbrief-bullish',
-      bg: 'bg-finbrief-bullish/10',
-      border: 'border-finbrief-bullish/20',
+      color: '#3182F6',
+      bg: 'rgba(49, 130, 246, 0.1)',
+      border: 'rgba(49, 130, 246, 0.2)',
     },
     bearish: {
       label: 'BEARISH',
-      color: 'text-finbrief-bearish',
-      bg: 'bg-finbrief-bearish/10',
-      border: 'border-finbrief-bearish/20',
+      color: '#FF3B30',
+      bg: 'rgba(255, 59, 48, 0.1)',
+      border: 'rgba(255, 59, 48, 0.2)',
     },
     neutral: {
       label: 'NEUTRAL',
-      color: 'text-finbrief-neutral',
-      bg: 'bg-finbrief-gray-100',
-      border: 'border-finbrief-gray-200',
+      color: '#86868B',
+      bg: 'rgba(134, 134, 139, 0.1)',
+      border: 'rgba(134, 134, 139, 0.2)',
     },
   };
 
@@ -300,10 +315,13 @@ function BriefingSample() {
     <section className="py-section px-6 bg-white/50 backdrop-blur-sm">
       <div className="max-w-content mx-auto">
         <ScrollReveal className="text-center mb-element">
-          <p className="text-finbrief-gray-500 text-sm font-medium tracking-wide uppercase mb-4">
+          <p className="text-finbrief-gray-500 text-base font-medium tracking-wide uppercase mb-4">
             미리보기
           </p>
-          <h2 className="text-section text-finbrief-black">
+          <h2
+            className="text-finbrief-black font-semibold"
+            style={{ fontSize: '36px' }}
+          >
             오늘의 브리핑 샘플
           </h2>
         </ScrollReveal>
@@ -316,14 +334,22 @@ function BriefingSample() {
                 return (
                   <div
                     key={index}
-                    className={`p-5 rounded-2xl border ${style.bg} ${style.border}`}
+                    className="p-5 rounded-2xl border"
+                    style={{
+                      backgroundColor: style.bg,
+                      borderColor: style.border,
+                    }}
                   >
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <h4 className="font-semibold text-lg text-finbrief-black">
                         {item.title}
                       </h4>
                       <span
-                        className={`flex-shrink-0 text-xs font-bold px-3 py-1 rounded-full ${style.color} ${style.bg}`}
+                        className="flex-shrink-0 text-xs font-bold px-3 py-1 rounded-full"
+                        style={{
+                          color: style.color,
+                          backgroundColor: style.bg,
+                        }}
                       >
                         {style.label}
                       </span>
