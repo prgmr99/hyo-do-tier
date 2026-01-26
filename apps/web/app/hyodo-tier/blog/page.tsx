@@ -27,7 +27,7 @@ export default function BlogPage() {
           효도티어 테스트로 당신의 효도 스타일을 확인하세요
         </p>
         <Link
-          href="/"
+          href="/hyodo-tier"
           className="inline-block bg-ink text-white px-6 py-2 rounded-lg font-bold hover:bg-grading transition-all"
         >
           테스트 시작하기 →
@@ -39,7 +39,7 @@ export default function BlogPage() {
         {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/hyodo-tier/blog/${post.slug}`}
             className="block bg-white p-6 rounded-xl border border-ink/10 shadow-sm hover:shadow-md hover:border-grading transition-all group"
           >
             {/* 태그 */}
@@ -88,7 +88,7 @@ export default function BlogPage() {
           개선 방법을 찾아보세요!
         </p>
         <Link
-          href="/"
+          href="/hyodo-tier"
           className="inline-block bg-grading text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-700 transition-all"
         >
           효도티어 테스트 시작 →

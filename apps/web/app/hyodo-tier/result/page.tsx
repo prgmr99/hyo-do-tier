@@ -43,7 +43,7 @@ function ResultContent() {
   useEffect(() => {
     // 공유된 결과가 없고, 푼 문제도 0개면 비정상 접근
     if (!sharedResultId && currentStep === 0) {
-      router.replace('/');
+      router.replace('/hyodo-tier');
     } else {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsReady(true);
@@ -146,7 +146,7 @@ function ResultContent() {
 
         <div className="grid grid-cols-2 gap-3">
           <Link
-            href="/"
+            href="/hyodo-tier"
             onClick={resetQuiz}
             className="bg-stone-800 text-white py-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 hover:bg-black transition-all"
           >
@@ -154,7 +154,7 @@ function ResultContent() {
           </Link>
 
           <Link
-            href="/"
+            href="/hyodo-tier"
             onClick={resetQuiz}
             className="bg-white border-2 border-stone-200 text-ink py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-stone-50"
           >

@@ -23,11 +23,11 @@ export default function Home() {
       return;
     }
     setError('');
-    router.push('/quiz');
+    router.push('/hyodo-tier/quiz');
   };
 
   const handleDontKnow = () => {
-    router.push('/result?result=UNFILIAL');
+    router.push('/hyodo-tier/result?result=UNFILIAL');
   };
 
   return (

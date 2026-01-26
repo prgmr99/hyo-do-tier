@@ -1,0 +1,75 @@
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+
+export default function YeomniverseLanding() {
+  const services = [
+    {
+      title: '효도티어',
+      subtitle: '부모님 탐구영역',
+      description: '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험으로 부모님과의 관계를 진단해보세요.',
+      href: '/hyodo-tier',
+      gradient: 'from-red-500 to-orange-500',
+      bgColor: 'bg-red-50',
+    },
+    {
+      title: 'FinBrief',
+      subtitle: 'AI 재테크 브리핑',
+      description: '30초 만에 읽는 AI 재테크 브리핑. 매일 아침 8시, 핵심 뉴스만 텔레그램으로 받아보세요.',
+      href: '/finbrief',
+      gradient: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-50',
+    },
+  ];
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center px-6 py-20 text-center">
+        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-4">
+          <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+            Yeomniverse
+          </span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-md">
+          다양한 디지털 서비스를 만나보세요
+        </p>
+      </section>
+
+      {/* Services Grid */}
+      <section className="max-w-4xl mx-auto px-6 pb-20">
+        <div className="grid md:grid-cols-2 gap-6">
+          {services.map((service) => (
+            <Link
+              key={service.href}
+              href={service.href}
+              className={`group block p-8 rounded-3xl ${service.bgColor} border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+            >
+              <div className="mb-4">
+                <h2 className={`text-3xl font-black bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                  {service.title}
+                </h2>
+                <p className="text-sm font-medium text-gray-500 mt-1">
+                  {service.subtitle}
+                </p>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed mb-6">
+                {service.description}
+              </p>
+
+              <div className={`inline-flex items-center gap-2 text-sm font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}>
+                시작하기
+                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
+        <p>2025 Yeomniverse. All rights reserved.</p>
+      </footer>
+    </main>
+  );
+}

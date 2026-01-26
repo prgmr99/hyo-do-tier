@@ -58,13 +58,13 @@ export default async function BlogPostPage({ params }: Props) {
         '@type': 'ListItem',
         position: 2,
         name: '블로그',
-        item: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/blog`,
+        item: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/blog`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/blog/${slug}`,
+        item: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/blog/${slug}`,
       },
     ],
   };
@@ -74,11 +74,11 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="min-h-screen bg-paper p-6 pb-20 animate-fade-in">
         {/* Breadcrumb */}
         <nav className="mb-6 text-sm text-ink/60 flex items-center gap-2">
-          <Link href="/" className="hover:text-grading transition-colors">
+          <Link href="/hyodo-tier" className="hover:text-grading transition-colors">
             <Home className="w-4 h-4" />
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/blog" className="hover:text-grading transition-colors">
+          <Link href="/hyodo-tier/blog" className="hover:text-grading transition-colors">
             블로그
           </Link>
           <ChevronRight className="w-3 h-3" />
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }: Props) {
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.slug}
-                  href={`/blog/${relatedPost.slug}`}
+                  href={`/hyodo-tier/blog/${relatedPost.slug}`}
                   className="block bg-white p-4 rounded-lg border border-ink/10 hover:border-grading hover:shadow-md transition-all"
                 >
                   <h3 className="font-bold text-ink mb-1 group-hover:text-grading">
@@ -174,7 +174,7 @@ export default async function BlogPostPage({ params }: Props) {
             맞춤 조언을 받아보세요!
           </p>
           <Link
-            href="/"
+            href="/hyodo-tier"
             className="inline-block bg-grading text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-700 transition-all text-lg"
           >
             효도티어 테스트 시작하기 →

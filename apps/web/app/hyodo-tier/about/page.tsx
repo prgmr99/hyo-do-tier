@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     title: '효도티어 서비스 소개',
     description:
       '효도티어는 MZ세대를 위한 재미있고 의미있는 효도 자가진단 서비스입니다.',
-    url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/about`,
+    url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/about`,
     type: 'website',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/about`,
+    canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/about`,
   },
 };
 
@@ -115,7 +115,7 @@ export default function AboutPage() {
         {/* 하단 링크 */}
         <div className="pt-8 text-center">
           <Link
-            href="/"
+            href="/hyodo-tier"
             className="inline-block bg-grading text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-700 transition-all"
           >
             내 효도 등급 확인하러 가기

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Zap, Brain, Target, ChevronDown, ArrowRight, Send } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/finbrief/landing';
 import { LiquidEther } from '@/components/finbrief/backgrounds';
@@ -193,19 +193,19 @@ function FeatureShowcase() {
             className="text-finbrief-white font-semibold mb-10"
             style={{ fontSize: 'clamp(36px, 5vw, 48px)', lineHeight: 1.15 }}
           >
-            더 스마트하게,<br />더 빠르게.
+            더 스마트하게,<br />더 빠르게
           </h2>
         </ScrollReveal>
 
         <StaggerContainer staggerDelay={0.2} className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <StaggerItem key={index}>
-              <div className="p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:bg-white/10 transition-colors duration-300">
+              <div className="p-8 h-72 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:bg-white/10 transition-colors duration-300">
                 <feature.icon className="w-12 h-12 mb-6" style={{ color: '#2997FF' }} />
                 <h3 className="text-finbrief-white mb-4" style={{ fontSize: 'clamp(24px, 4vw, 40px)' }}>
                   {feature.title}
                 </h3>
-                <p className="text-finbrief-gray-500 leading-relaxed">
+                <p className="text-finbrief-gray-500 leading-relaxed break-keep">
                   {feature.description}
                 </p>
               </div>

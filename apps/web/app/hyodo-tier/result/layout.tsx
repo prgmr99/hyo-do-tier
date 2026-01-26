@@ -17,7 +17,7 @@ export async function generateMetadata({
     description:
       '2025학년도 대국민 효도능력시험 결과를 확인하세요. 당신의 효도 등급과 상세한 분석 결과를 제공합니다.',
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/result`,
+      canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/result`,
     },
   };
 
@@ -35,7 +35,7 @@ export async function generateMetadata({
       openGraph: {
         title: `나는 ${result.title}! | 효도티어`,
         description: result.subtitle,
-        url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/result?result=${resultId}&interest=${interest}&intimacy=${intimacy}&expression=${expression}`,
+        url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/result?result=${resultId}&interest=${interest}&intimacy=${intimacy}&expression=${expression}`,
         type: 'website',
         images: [
           {
@@ -53,7 +53,7 @@ export async function generateMetadata({
         images: [`/api/og?result=${resultId}`],
       },
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/result`,
+        canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/hyodo-tier/result`,
       },
     };
   }

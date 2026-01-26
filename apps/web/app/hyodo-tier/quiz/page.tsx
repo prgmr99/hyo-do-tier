@@ -46,7 +46,7 @@ function QuizContent() {
     setDirection(1); // 앞으로 가기
 
     // 2. URL 업데이트 -> useEffect에서 감지하여 nextStep() 호출
-    router.push(`/quiz?step=${currentStep + 1}`);
+    router.push(`/hyodo-tier/quiz?step=${currentStep + 1}`);
   };
 
   // URL 쿼리 파라미터와 스토어 상태 동기화
@@ -67,7 +67,7 @@ function QuizContent() {
     }
     // 3. 비정상적인 앞으로 가기 방지 (건너뛰기 등)
     else if (stepFromUrl > currentStep) {
-      router.replace(`/quiz?step=${currentStep}`);
+      router.replace(`/hyodo-tier/quiz?step=${currentStep}`);
     }
   }, [searchParams, currentStep, answers.length, prevStep, nextStep, router]);
 
@@ -77,7 +77,7 @@ function QuizContent() {
     if (currentStep === 0) {
       resetQuiz();
       // URL도 초기화
-      router.replace('/quiz?step=0');
+      router.replace('/hyodo-tier/quiz?step=0');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -85,7 +85,7 @@ function QuizContent() {
   // 결과 페이지 이동 처리
   useEffect(() => {
     if (isFinished) {
-      router.push('/result'); // 결과 페이지로 자동 이동
+      router.push('/hyodo-tier/result'); // 결과 페이지로 자동 이동
     }
   }, [isFinished, router]);
 
