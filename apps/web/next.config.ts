@@ -3,40 +3,52 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // 기존 효도티어 URL → 새 URL로 301 리다이렉트 (SEO 보호)
+      // Redirect hyodo-tier routes to subdomain
+      {
+        source: '/hyodo-tier/:path*',
+        destination: 'https://hyodo-tier.yeomniverse.com/:path*',
+        permanent: true,
+      },
+      // Redirect finbrief routes to subdomain
+      {
+        source: '/finbrief/:path*',
+        destination: 'https://finbrief.yeomniverse.com/:path*',
+        permanent: true,
+      },
+      // Legacy hyodo-tier routes (SEO protection)
       {
         source: '/quiz',
-        destination: '/hyodo-tier/quiz',
+        destination: 'https://hyodo-tier.yeomniverse.com/quiz',
         permanent: true,
       },
       {
         source: '/result',
-        destination: '/hyodo-tier/result',
+        destination: 'https://hyodo-tier.yeomniverse.com/result',
         permanent: true,
       },
       {
         source: '/blog',
-        destination: '/hyodo-tier/blog',
+        destination: 'https://hyodo-tier.yeomniverse.com/blog',
         permanent: true,
       },
       {
-        source: '/blog/:slug',
-        destination: '/hyodo-tier/blog/:slug',
+        source: '/blog/:slug*',
+        destination: 'https://hyodo-tier.yeomniverse.com/blog/:slug*',
         permanent: true,
       },
       {
         source: '/about',
-        destination: '/hyodo-tier/about',
+        destination: 'https://hyodo-tier.yeomniverse.com/about',
         permanent: true,
       },
       {
         source: '/privacy',
-        destination: '/hyodo-tier/privacy',
+        destination: 'https://hyodo-tier.yeomniverse.com/privacy',
         permanent: true,
       },
       {
         source: '/terms',
-        destination: '/hyodo-tier/terms',
+        destination: 'https://hyodo-tier.yeomniverse.com/terms',
         permanent: true,
       },
     ];

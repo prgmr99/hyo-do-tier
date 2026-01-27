@@ -2,6 +2,8 @@
 
 import Script from 'next/script';
 
+// Types are declared in types/kakao.d.ts
+
 export default function KakaoScript() {
   return (
     <Script
@@ -9,8 +11,10 @@ export default function KakaoScript() {
       integrity="sha384-kDljxUXHaJ9xAb2AzRd59KxjrFjzHa5TAoFQ6GbYTCAG0bjM55XohjjDT7tDDC01"
       crossOrigin="anonymous"
       onLoad={() => {
-        if (window.Kakao && !window.Kakao.isInitialized()) {
-          window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JS_KEY);
+        const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
+        const kakao = (window as unknown as { Kakao?: { init: (key: string) => void; isInitialized: () => boolean } }).Kakao;
+        if (kakao && !kakao.isInitialized() && kakaoKey) {
+          kakao.init(kakaoKey);
         }
       }}
     />
