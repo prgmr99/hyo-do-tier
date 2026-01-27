@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { Zap, Brain, Target, ChevronDown, ArrowRight, Send } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/landing';
 import LiquidEther from '@/components/backgrounds/LiquidEther';
@@ -389,14 +389,75 @@ function BriefingSample() {
 // ============================================
 function CTASection() {
   const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('구독:', email);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setEmail('');
+
+    if (!email.trim()) return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setMessage(data.message);
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.error);
+
+        setTimeout(() => {
+          setStatus('idle');
+          setMessage('');
+        }, 5000);
+      }
+    } catch {
+      setStatus('error');
+      setMessage('네트워크 오류가 발생했습니다. 다시 시도해주세요.');
+
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
+    }
+  };
+
+  const getButtonContent = () => {
+    switch (status) {
+      case 'loading':
+        return (
+          <>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+              className="w-5 h-5 border-2 border-finbrief-blue-500 border-t-transparent rounded-full"
+            />
+            처리 중...
+          </>
+        );
+      case 'success':
+        return '구독 완료!';
+      case 'error':
+        return '다시 시도';
+      default:
+        return (
+          <>
+            무료 구독
+            <Send className="w-4 h-4" />
+          </>
+        );
+    }
   };
 
   return (
@@ -407,7 +468,7 @@ function CTASection() {
             내일 아침부터 시작하세요
           </h2>
           <p className="text-lead text-white/70 mb-element max-w-text mx-auto">
-            매일 아침 8시, 텔레그램으로 배달됩니다
+            매일 아침 8시, 이메일 또는 텔레그램으로 배달됩니다
           </p>
         </ScrollReveal>
 
@@ -419,23 +480,39 @@ function CTASection() {
                 placeholder="이메일 주소"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={status === 'loading' || status === 'success'}
                 required
-                className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 bg-finbrief-white text-finbrief-blue-500 px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105"
+                disabled={status === 'loading' || status === 'success'}
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 disabled:cursor-not-allowed ${
+                  status === 'success'
+                    ? 'bg-green-500 text-white'
+                    : status === 'error'
+                      ? 'bg-red-500 text-white hover:bg-red-600'
+                      : 'bg-finbrief-white text-finbrief-blue-500 hover:bg-white/90 hover:scale-105'
+                }`}
               >
-                {isSubmitted ? (
-                  '구독 완료!'
-                ) : (
-                  <>
-                    무료 구독
-                    <Send className="w-4 h-4" />
-                  </>
-                )}
+                {getButtonContent()}
               </button>
             </div>
+
+            <AnimatePresence mode="wait">
+              {message && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className={`mt-4 text-sm ${
+                    status === 'success' ? 'text-green-300' : 'text-red-300'
+                  }`}
+                >
+                  {message}
+                </motion.p>
+              )}
+            </AnimatePresence>
           </form>
 
           <p className="mt-8 text-white/60">
