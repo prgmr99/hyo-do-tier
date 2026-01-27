@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { KakaoScript } from '@hyo/ui';
 import { RESULTS } from '@/lib/resultData';
 
 type Props = {
@@ -66,5 +67,10 @@ export default function ResultLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <KakaoScript />
+    </>
+  );
 }

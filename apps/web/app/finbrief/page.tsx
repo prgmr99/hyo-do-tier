@@ -20,6 +20,7 @@ export default function FinBriefPage() {
           autoIntensity={1.5}
           mouseForce={15}
           cursorSize={80}
+          disableTouchInteraction={true}
         />
       </div>
 
@@ -394,12 +395,25 @@ function CTASection() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('구독:', email);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setEmail('');
+    try {
+      const response = await fetch('/api/finbrief/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        console.log('구독:', email);
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 3000);
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('구독 실패:', error);
+    }
   };
 
   return (

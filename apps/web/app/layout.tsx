@@ -4,7 +4,6 @@ import './globals.css';
 import {
 	GoogleAdSense,
 	GoogleAnalytics,
-	KakaoScript,
 } from '@hyo/ui';
 import { sans, serif } from './fonts';
 
@@ -113,7 +112,6 @@ export default function RootLayout({
         {children}
 
         <GoogleAnalytics />
-        <KakaoScript />
         <GoogleAdSense />
 
         <Script

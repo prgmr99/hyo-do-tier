@@ -1,8 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Galaxy } from '@hyo/ui';
+import GalaxyBackground from './components/GalaxyBackground';
 
 export default function YeomniverseLanding() {
   const services = [
@@ -27,24 +25,7 @@ export default function YeomniverseLanding() {
   return (
     <>
       {/* Fixed Galaxy Background */}
-      <div className="fixed inset-0 -z-10 bg-black">
-        <Galaxy
-          focal={[0.5, 0.5]}
-          starSpeed={0.5}
-          density={1}
-          hueShift={140}
-          speed={1.0}
-          glowIntensity={0.3}
-          saturation={0.0}
-          mouseRepulsion={true}
-          repulsionStrength={2}
-          twinkleIntensity={0.3}
-          rotationSpeed={0.05}
-          autoCenterRepulsion={0}
-          transparent={false}
-          mouseInteraction={true}
-        />
-      </div>
+      <GalaxyBackground />
 
       <main className="min-h-screen relative">
         {/* Hero Section */}
