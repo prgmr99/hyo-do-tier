@@ -46,3 +46,8 @@ next-env.d.ts
 
 /.agent
 /.vscode
+/.claude
+/.agents
+/.codex
+/.cursor
+/.gemini
