@@ -15,6 +15,7 @@
     "format": "biome check --write ."
   },
   "dependencies": {
+    "@react-email/components": "^0.0.30",
     "@supabase/supabase-js": "^2.93.1",
     "resend": "^6.8.0"
   },

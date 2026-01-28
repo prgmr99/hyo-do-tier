@@ -95,19 +95,26 @@ export async function POST(
       const resend = getResendClient();
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'FinBrief <noreply@finbrief.io>';
 
-      await resend.emails.send({
+      console.log('📧 Attempting to send welcome email...');
+      console.log('From:', fromEmail);
+      console.log('To:', normalizedEmail);
+
+      const result = await resend.emails.send({
         from: fromEmail,
         to: normalizedEmail,
         subject: '환영합니다! FinBrief 구독이 시작되었습니다',
         react: WelcomeEmail({ unsubscribeToken: newSubscriber.unsubscribe_token }),
       });
 
+      console.log('✅ Email sent successfully:', result);
+
       await supabase
         .from('subscribers')
         .update({ welcome_email_sent: true })
         .eq('id', newSubscriber.id);
     } catch (emailError) {
-      console.error('Welcome email failed:', emailError);
+      console.error('❌ Welcome email failed:', emailError);
+      console.error('Error details:', JSON.stringify(emailError, null, 2));
     }
 
     return NextResponse.json({

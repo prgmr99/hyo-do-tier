@@ -452,7 +452,7 @@ function CTASection() {
                     setError('');
                   }
                 }}
-                disabled={isLoading || isSubmitted}
+                disabled={isLoading}
                 required
                 className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               />
