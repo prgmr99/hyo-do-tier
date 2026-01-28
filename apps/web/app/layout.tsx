@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import {
 	GoogleAdSense,
@@ -111,6 +112,7 @@ export default function RootLayout({
       <body className="min-h-screen font-sans antialiased">
         {children}
 
+        <Analytics />
         <GoogleAnalytics />
         <GoogleAdSense />
 
