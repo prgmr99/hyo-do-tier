@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   applicationName: 'Yeomniverse',
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/images/favicon/icon.svg', type: 'image/svg+xml' },
+      { url: '/images/favicon/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/favicon/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/images/favicon/favicon.ico',
     apple: [
-      { url: '/apple-icon-180.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/favicon/apple-icon-180.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   authors: [{ name: 'Yeomniverse' }],
@@ -95,7 +95,7 @@ export default function RootLayout({
     url: process.env.NEXT_PUBLIC_DOMAIN_URL,
     logo: {
       '@type': 'ImageObject',
-      url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/icon-512.png`,
+      url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/images/favicon/icon-512.png`,
       width: 512,
       height: 512,
     },
