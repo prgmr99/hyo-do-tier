@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: '%s | 효도티어',
   },
   description:
-    '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험. 지금 바로 응시하고 효도 등급을 확인하세요!',
+    '당신의 효도 등급은 몇 등급입니까? 2026학년도 대국민 효도능력시험. 지금 바로 응시하고 효도 등급을 확인하세요!',
   applicationName: '효도티어',
   keywords: [
     '효도티어',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '효도티어 | 부모님 탐구영역',
     description:
-      '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
+      '당신의 효도 등급은 몇 등급입니까? 2026학년도 대국민 효도능력시험',
     url: DOMAIN_URL,
     siteName: '효도티어',
     locale: 'ko_KR',
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '효도티어 | 부모님 탐구영역',
     description:
-      '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험',
+      '당신의 효도 등급은 몇 등급입니까? 2026학년도 대국민 효도능력시험',
     images: ['/og-image.png'],
   },
   alternates: {
@@ -119,14 +119,14 @@ export default function RootLayout({
       width: 512,
       height: 512,
     },
-    description: '2025학년도 대국민 효도능력시험',
+    description: '2026학년도 대국민 효도능력시험',
   };
 
   // Quiz schema for better SEO
   const quizSchema = {
     '@context': 'https://schema.org',
     '@type': 'Quiz',
-    name: '2025학년도 대국민 효도능력시험',
+    name: '2026학년도 대국민 효도능력시험',
     description:
       '부모님에 대한 관심도, 친밀도, 표현력을 측정하는 심리 진단 테스트',
     educationalLevel: 'All ages',

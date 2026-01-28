@@ -7,7 +7,7 @@ export default function YeomniverseLanding() {
     {
       title: '효도티어',
       subtitle: '부모님 탐구영역',
-      description: '당신의 효도 등급은 몇 등급입니까? 2025학년도 대국민 효도능력시험으로 부모님과의 관계를 진단해보세요.',
+      description: '당신의 효도 등급은 몇 등급입니까? 2026학년도 대국민 효도능력시험으로 부모님과의 관계를 진단해보세요.',
       href: 'https://hyodo-tier.yeomniverse.com',
       gradient: 'from-red-500 to-orange-500',
       bgColor: 'bg-red-50',
@@ -78,7 +78,7 @@ export default function YeomniverseLanding() {
 
         {/* Footer */}
         <footer className="border-t border-white/10 py-8 text-center text-sm text-gray-400">
-          <p>2025 Yeomniverse. All rights reserved.</p>
+          <p>2026 Yeomniverse. All rights reserved.</p>
         </footer>
       </main>
     </>

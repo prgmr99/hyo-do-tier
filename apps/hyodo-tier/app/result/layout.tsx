@@ -16,7 +16,7 @@ export async function generateMetadata({
   const baseMetadata: Metadata = {
     title: '나의 효도 등급 결과',
     description:
-      '2025학년도 대국민 효도능력시험 결과를 확인하세요. 당신의 효도 등급과 상세한 분석 결과를 제공합니다.',
+      '2026학년도 대국민 효도능력시험 결과를 확인하세요. 당신의 효도 등급과 상세한 분석 결과를 제공합니다.',
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/result`,
     },

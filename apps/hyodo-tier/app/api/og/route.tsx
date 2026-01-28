@@ -95,7 +95,7 @@ export async function GET(req: NextRequest) {
               fontWeight: 500,
             }}
           >
-            2025학년도 대국민 효도능력시험
+            2026학년도 대국민 효도능력시험
           </div>
         </div>
 

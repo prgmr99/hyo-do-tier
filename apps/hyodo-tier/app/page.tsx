@@ -143,7 +143,7 @@ export default function Home() {
           </div>
 
           <p className="text-xs text-ink/40 mt-4">
-            Designed by Hyo-Do-Tier Committee. 2025
+            Designed by Hyo-Do-Tier Committee. 2026
           </p>
         </div>
       </section>
@@ -155,7 +155,7 @@ export default function Home() {
             📌 효도티어란 무엇인가요?
           </h3>
           <p className="text-sm text-ink/70 leading-relaxed break-keep">
-            &apos;2025학년도 대국민 효도능력시험&apos;은 단순한 심리 테스트를
+            &apos;2026학년도 대국민 효도능력시험&apos;은 단순한 심리 테스트를
             넘어, 현대 사회에서 점차 잊혀가는 효(孝)의 가치를 재미있게 재해석한
             자기 진단 서비스입니다. 부모님에 대한 관심도, 친밀도, 그리고
             표현력을 종합적으로 분석하여 총 8가지의 독창적인 캐릭터 유형으로

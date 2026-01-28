@@ -57,7 +57,7 @@ function ResultContent() {
       {/* 1. 결과 등급 (도장 애니메이션) */}
       <div className="relative w-full text-center py-8 border-b-2 border-dashed border-ink/20">
         <p className="text-sm font-serif text-ink/60 mb-2 font-bold">
-          2025학년도 효도능력시험 성적표
+          2026학년도 효도능력시험 성적표
         </p>
 
         {/* 캐릭터 이름 */}

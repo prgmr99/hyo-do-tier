@@ -2,188 +2,57 @@
 
 <div align="center">
   <h1>Yeomniverse</h1>
-  <p><strong>Seungjun Yeom's Omniverse of Digital Services</strong></p>
-  
-  <img src="https://img.shields.io/badge/Turborepo-2.7-blue?style=for-the-badge&logo=turborepo&logoColor=white" />
-  <img src="https://img.shields.io/badge/pnpm-9.0-yellow?style=for-the-badge&logo=pnpm&logoColor=white" />
-  <img src="https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white" />
-  
-  <br/><br/>
-  
+
+  <br/>
+
   <p>
-    A scalable monorepo architecture powering multiple digital services<br/>
-    Built with Turborepo, pnpm workspaces, and modern web technologies
+    창의적이고 유용한 디지털 서비스를 만들어 세상과 공유합니다
   </p>
 </div>
 
 ---
 
-## 🌟 Featured Services
+## 🌟 서비스 소개
 
-### 💯 [Hyo-Tier](https://hyo-tier.vercel.app)
-**효도능력시험 (Filial Piety Test)**
-- 2025학년도 대국민 효도능력시험
-- 14-question quiz testing parent-child relationships
-- 8 unique personality type results
-- Viral KakaoTalk sharing integration
-- Mobile-first responsive design
+### 💯 효도티어 (Hyodo-Tier)
+**2026학년도 대국민 효도능력시험**
 
-**Tech:** Next.js 16, React 19, Tailwind CSS v4, Zustand
+부모님과의 관계를 재미있게 테스트하는 성격 진단 퀴즈입니다.
+
+- 📝 14개의 재미있는 질문으로 구성
+- 🎯 8가지 독특한 성격 유형 결과
+- 💬 카카오톡 공유 기능
+- 📱 모바일 최적화 디자인
+
+👉 [효티어 바로가기](https://hyo-tier.vercel.app)
 
 ---
 
-## 📁 Monorepo Structure
+### 📈 핀브리프 (FinBrief)
+**매일 아침 받아보는 금융 시장 요약**
 
-```
-yeomniverse/
-├── apps/
-│   └── web/                  # Hyo-Tier service
-├── packages/
-│   ├── ui/                   # Shared UI components
-│   ├── utils/                # Shared utilities
-│   └── tsconfig/             # Shared TypeScript configs
-├── turbo.json                # Turborepo pipeline
-├── pnpm-workspace.yaml       # Workspace configuration
-└── package.json              # Root configuration
-```
+AI가 엄선한 글로벌 금융 뉴스를 매일 아침 텔레그램으로 받아보세요.
 
-## 🚀 Quick Start
+- 🌅 매일 오전 8시 자동 발송
+- 🤖 Gemini AI 기반 뉴스 요약
+- 📰 주요 금융 미디어 큐레이션
+- 💌 텔레그램 알림 서비스
 
-### Prerequisites
+👉 [핀브리프 구독하기](https://finbrief.vercel.app)
 
-- Node.js >= 18
-- pnpm 9.0+
+---
 
-### Installation
+## 📬 Contact
 
-```bash
-# Clone repository
-git clone https://github.com/prgmr99/yeomniverse.git
-cd yeomniverse
+궁금한 점이나 제안사항이 있으시면 언제든 연락주세요.
 
-# Install dependencies
-pnpm install
-```
-
-### Development
-
-```bash
-# Run all services
-pnpm dev
-
-# Run specific service
-pnpm turbo dev --filter=@hyo/web
-```
-
-### Build
-
-```bash
-# Build all services
-pnpm build
-
-# Build specific service
-pnpm turbo build --filter=@hyo/web
-```
-
-## 📦 Shared Packages
-
-### @hyo/ui
-Shared UI component library used across all services.
-
-**Components:**
-- Footer - Application footer with policy links
-- Loading - Loading spinner animation
-- GoogleAdSense - AdSense integration
-- GoogleAnalytics - Analytics tracking
-- KakaoScript - Kakao SDK loader
-
-### @hyo/utils
-Shared utilities and constants.
-
-**Exports:**
-- Quiz question data (QUESTIONS)
-- Effect types
-- Common constants
-
-### @hyo/tsconfig
-Shared TypeScript configurations for consistency.
-
-**Configs:**
-- `base.json` - Base TypeScript settings
-- `nextjs.json` - Next.js specific
-- `react-library.json` - React libraries
-
-## 🌐 Deployment
-
-Each service is independently deployable to Vercel:
-
-- **Hyo-Tier**: `apps/web` → Production deployment
-- Root Directory: `apps/web`
-- Build Command: `cd ../.. && pnpm turbo build --filter=@hyo/web`
-
-See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed instructions.
-
-## 🏗️ Architecture Benefits
-
-✅ **Code Sharing** - Reuse components across all services  
-✅ **Fast Builds** - Turborepo caching & parallel execution  
-✅ **Type Safety** - Shared TypeScript configurations  
-✅ **Scalable** - Easy to add new services  
-✅ **Developer Experience** - Single command for everything  
-
-## 🔧 Adding New Services
-
-```bash
-# Create new app
-mkdir apps/my-service
-
-# Add dependencies
-{
-  "name": "@hyo/my-service",
-  "dependencies": {
-    "@hyo/ui": "workspace:*",
-    "@hyo/utils": "workspace:*"
-  }
-}
-
-# Install
-pnpm install
-```
-
-## 📚 Documentation
-
-- [Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md)
-- [Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)
-- [Monorepo Migration Walkthrough](/.gemini/antigravity/brain/*/walkthrough.md)
-
-## 🛠️ Available Commands
-
-```bash
-pnpm dev              # Run all dev servers
-pnpm build            # Build all services
-pnpm lint             # Lint all packages
-pnpm format           # Format all code
-pnpm clean            # Clean build outputs
-```
-
-## 🎯 Future Services
-
-Coming soon to the Yeomniverse:
-- Admin Dashboard
-- Community Platform
-- Analytics Dashboard
-- More creative projects...
-
-## 📄 License
-
-MIT License - See [LICENSE](./LICENSE) file
+- GitHub: [@prgmr99](https://github.com/prgmr99)
+- Email: your.email@example.com
 
 ---
 
 <div align="center">
   <p>Built with ❤️ by Seungjun Yeom</p>
-  <p>Powered by Turborepo · Next.js · TypeScript</p>
-  
+
   **🌌 Welcome to the Yeomniverse 🌌**
 </div>
