@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { createBrowserClient } from '@supabase/ssr';
+import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { LayoutDashboard, Star, LogOut, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,30 +12,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter();
   const pathname = usePathname();
 
-  const supabase = useMemo(() => {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    if (!url || !key) return null;
-    return createBrowserClient(url, key);
-  }, []);
-
   useEffect(() => {
-    if (!supabase) return;
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        router.push('/auth/login');
-        return;
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        if (data.user) {
+          setUser({ email: data.user.email });
+        } else {
+          router.push('/login');
+        }
+      } catch {
+        router.push('/login');
+      } finally {
+        setIsLoading(false);
       }
-      setUser({ email: session.user.email || '' });
-      setIsLoading(false);
     };
-    checkAuth();
-  }, [router, supabase]);
+    fetchUser();
+  }, [router]);
 
   const handleLogout = async () => {
-    if (supabase) {
-      await supabase.auth.signOut();
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch {
+      // Ignore errors
     }
     router.push('/');
   };
