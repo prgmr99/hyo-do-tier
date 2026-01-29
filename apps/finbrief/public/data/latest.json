@@ -1,0 +1,16 @@
+{
+  "date": "2026-01-29",
+  "timestamp": "2026-01-29T00:00:00.000Z",
+  "newsCount": 0,
+  "analysis": {
+    "topNews": [
+      {
+        "title": "오늘의 브리핑을 준비 중입니다",
+        "summary": "곧 최신 금융 뉴스를 전달해드리겠습니다.",
+        "sentiment": "neutral"
+      }
+    ],
+    "keywords": ["#금융", "#투자", "#뉴스"],
+    "marketSentiment": "오늘의 시장 분석을 준비하고 있습니다."
+  }
+}
