@@ -1,6 +1,7 @@
 import { collectAllNews } from './collectors/rss-collector';
 import { analyzeNews, formatAnalysisResult } from './analyzers/gemini-analyzer';
 import { sendDailyBriefing, getContextualAffiliateLinks } from './messengers/telegram-sender';
+import { sendEmailBriefing } from './messengers/email-sender';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -35,15 +36,19 @@ async function main() {
     
     // Step 4: 텔레그램 발송
     const chatId = process.env.TELEGRAM_CHAT_ID;
-    
+
     if (!chatId) {
       console.warn('⚠️ TELEGRAM_CHAT_ID가 설정되지 않아 텔레그램 발송을 건너뜁니다.');
     } else {
-      console.log('\n📤 Step 3: 텔레그램 발송 중...\n');
+      console.log('\n📤 Step 4: 텔레그램 발송 중...\n');
       await sendDailyBriefing(chatId, analysis, affiliateLinks);
     }
-    
-    // Step 5: JSON 파일로 저장
+
+    // Step 5: 이메일 발송
+    console.log('\n📧 Step 5: 이메일 발송 중...\n');
+    const emailResult = await sendEmailBriefing(analysis, affiliateLinks);
+
+    // Step 6: JSON 파일로 저장
     const today = new Date().toISOString().split('T')[0];
     const outputPath = path.join(__dirname, '..', 'data', `${today}.json`);
     
@@ -53,7 +58,9 @@ async function main() {
       newsCount: newsItems.length,
       analysis: analysis,
       affiliateLinks: affiliateLinks,
-      sentToTelegram: !!chatId
+      sentToTelegram: !!chatId,
+      sentToEmail: emailResult.success,
+      emailsSent: emailResult.emailsSent
     };
     
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');

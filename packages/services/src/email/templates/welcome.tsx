@@ -6,7 +6,7 @@ interface WelcomeEmailProps {
 
 export function WelcomeEmail({ unsubscribeToken }: WelcomeEmailProps): React.ReactElement {
   const baseUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || 'https://yeomniverse.com';
-  const unsubscribeUrl = `${baseUrl}/api/finbrief/unsubscribe?token=${unsubscribeToken}`;
+  const unsubscribeUrl = `${baseUrl}/api/unsubscribe?token=${unsubscribeToken}`;
   const telegramUrl = 'https://t.me/finbrief_news_bot';
 
   return (
