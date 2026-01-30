@@ -1,0 +1,22 @@
+/* Pricing Page Specific Styles */
+
+/* Dark blue gradient background for pricing page */
+.bg-pricing-gradient {
+  background: linear-gradient(
+    135deg,
+    #0a1929 0%,
+    #001529 25%,
+    #003366 50%,
+    #001529 75%,
+    #0a1929 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Alternative: Static dark blue gradient */
+@supports not (animation: gradientShift) {
+  .bg-pricing-gradient {
+    background: linear-gradient(to bottom right, #0a1929, #001529, #003366);
+  }
+}

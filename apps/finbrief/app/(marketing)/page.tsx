@@ -4,31 +4,12 @@ import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Zap, Brain, Target, ChevronDown, ArrowRight, Send } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/landing';
-import { LiquidEther } from '@/components/backgrounds';
 import BriefingSample from '@/components/BriefingSample';
-import Header from '@/components/Header';
 import './finbrief.css';
-
-const LIQUID_ETHER_COLORS = ['#0077B6', '#00B4D8', '#90E0EF'];
 
 export default function FinBriefPage() {
   return (
     <main className="relative">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 -z-10">
-        <LiquidEther
-          colors={LIQUID_ETHER_COLORS}
-          resolution={0.5}
-          autoDemo={true}
-          autoSpeed={0.3}
-          autoIntensity={1.5}
-          mouseForce={15}
-          cursorSize={80}
-          disableInteraction={true}
-        />
-      </div>
-
-      <Header />
       <HeroSection />
       <ValueProposition />
       <FeatureShowcase />

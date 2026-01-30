@@ -1,7 +1,6 @@
 'use client';
 
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
 import { PricingCard } from '@/components/PricingCard';
 
@@ -99,38 +98,19 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Header */}
-      <div className="border-b border-white/10 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400"
-            >
-              FinBrief
-            </Link>
-            <Link
-              href="/auth/login"
-              className="text-slate-300 hover:text-white transition-colors text-sm font-medium"
-            >
-              로그인
-            </Link>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen">
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
+          <span className="text-gradient">
             똑똑한 투자
           </span>
           를 위한
           <br />
           완벽한 요금제
         </h1>
-        <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
+        <p className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
           매일 아침 핵심 금융 뉴스와 개인화된 투자 인사이트를 받아보세요.
         </p>
 
@@ -142,14 +122,14 @@ export default function PricingPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="w-full px-4 py-3 bg-transparent text-white placeholder-slate-500 focus:outline-none"
+              className="w-full px-4 py-3 bg-transparent text-white placeholder-white/50 focus:outline-none"
             />
           </div>
           {message && (
             <div
               className={`mt-3 p-3 rounded-lg text-sm ${
                 message.type === 'success'
-                  ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400'
+                  ? 'bg-finbrief-blue-500/10 border border-finbrief-blue-500/20 text-finbrief-blue-400'
                   : 'bg-red-500/10 border border-red-500/20 text-red-400'
               }`}
             >
@@ -222,7 +202,7 @@ export default function PricingPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             자주 묻는 질문
           </h2>
-          <p className="text-slate-400 text-lg">
+          <p className="text-white/70 text-lg">
             궁금하신 사항을 확인해보세요.
           </p>
         </div>
@@ -242,14 +222,14 @@ export default function PricingPage() {
                   {faq.question}
                 </span>
                 {openFAQ === index ? (
-                  <ChevronUp className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <ChevronUp className="w-5 h-5 text-finbrief-blue-400 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-white/50 flex-shrink-0" />
                 )}
               </button>
               {openFAQ === index && (
                 <div className="px-6 pb-6">
-                  <p className="text-slate-300 leading-relaxed">{faq.answer}</p>
+                  <p className="text-white/80 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -258,52 +238,52 @@ export default function PricingPage() {
       </div>
 
       {/* Footer CTA */}
-      <div className="border-t border-white/10 bg-gradient-to-br from-emerald-900/20 to-teal-900/20">
+      <div className="border-t border-white/10 bg-cta-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             지금 바로 시작하세요
           </h2>
-          <p className="text-slate-300 text-lg mb-8">
+          <p className="text-white/80 text-lg mb-8">
             매일 아침 핵심 인사이트를 받아보고 더 나은 투자 결정을 하세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="/auth/login"
-              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="px-8 py-4 bg-white text-finbrief-blue-500 font-semibold rounded-xl hover:bg-white/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               무료로 시작하기
-            </Link>
-            <Link
+            </a>
+            <a
               href="/"
-              className="px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 border border-white/20 hover:border-emerald-500/50 transition-all"
+              className="px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all"
             >
               더 알아보기
-            </Link>
+            </a>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 bg-finbrief-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
             <p>© 2026 FinBrief. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link href="/" className="hover:text-white transition-colors">
+              <a href="/" className="hover:text-white transition-colors">
                 홈
-              </Link>
-              <Link
+              </a>
+              <a
                 href="/pricing"
                 className="hover:text-white transition-colors"
               >
                 요금제
-              </Link>
-              <Link
+              </a>
+              <a
                 href="/auth/login"
                 className="hover:text-white transition-colors"
               >
                 로그인
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -311,9 +291,9 @@ export default function PricingPage() {
 
       {/* Loading Overlay */}
       {isLoading && (
-        <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-finbrief-black/80 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-            <div className="w-16 h-16 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-finbrief-blue-500/20 border-t-finbrief-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-white font-semibold">결제 페이지로 이동 중...</p>
           </div>
         </div>

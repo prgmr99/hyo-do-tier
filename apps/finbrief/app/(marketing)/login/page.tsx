@@ -1,25 +1,16 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, ArrowRight, Sparkles } from 'lucide-react';
 
-function LoginForm() {
-  const searchParams = useSearchParams();
+export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{
     type: 'success' | 'error';
     text: string;
   } | null>(null);
-
-  useEffect(() => {
-    const emailParam = searchParams.get('email');
-    if (emailParam) {
-      setEmail(emailParam);
-    }
-  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,13 +55,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-teal-500/20 rounded-full blur-3xl" />
-      </div>
-
+    <div className="min-h-screen flex items-center justify-center p-4 pt-24">
       {/* Main Content */}
       <div className="relative w-full max-w-md">
         {/* Logo */}
@@ -186,19 +171,5 @@ function LoginForm() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function AuthLoginPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-          <div className="w-16 h-16 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
-        </div>
-      }
-    >
-      <LoginForm />
-    </Suspense>
   );
 }
