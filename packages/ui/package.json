@@ -6,7 +6,9 @@
   "types": "./src/index.ts",
   "scripts": {
     "lint": "biome check .",
-    "format": "biome check --write ."
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "peerDependencies": {
     "framer-motion": "^12",
@@ -17,9 +19,19 @@
   },
   "devDependencies": {
     "@hyo/tsconfig": "workspace:*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5"
+    "@vitejs/plugin-react": "^5.1.2",
+    "framer-motion": "^12.23.24",
+    "jsdom": "^27.4.0",
+    "lucide-react": "^0.554.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "typescript": "^5",
+    "vitest": "^4.0.18"
   },
   "dependencies": {
     "ogl": "^1.0.11"

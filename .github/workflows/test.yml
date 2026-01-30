@@ -1,0 +1,94 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Biome lint
+        run: pnpm lint
+
+      - name: Verify React 19 compatibility
+        run: |
+          echo "Testing React 19 + @testing-library/react compatibility..."
+          cd packages/ui && pnpm test -- --run --reporter=verbose
+        continue-on-error: false
+
+      - name: Run unit tests
+        run: pnpm test
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          files: |
+            ./packages/utils/coverage/coverage-final.json
+            ./packages/ui/coverage/coverage-final.json
+            ./packages/services/coverage/coverage-final.json
+            ./packages/finbrief-api/coverage/coverage-final.json
+            ./apps/web/coverage/coverage-final.json
+            ./apps/hyodo-tier/coverage/coverage-final.json
+            ./apps/finbrief/coverage/coverage-final.json
+          fail_ci_if_error: false
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright browsers
+        run: cd apps/hyodo-tier && pnpm exec playwright install --with-deps chromium
+
+      - name: Build app
+        run: pnpm turbo build --filter=@hyo/hyodo-tier
+
+      - name: Run E2E tests
+        run: cd apps/hyodo-tier && pnpm test:e2e --project=chromium
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: apps/hyodo-tier/playwright-report/
+          retention-days: 7
