@@ -40,32 +40,14 @@ export async function fetchGoogleFinanceNews(): Promise<NewsItem[]> {
 }
 
 /**
- * 네이버 증권 뉴스 수집 (보조)
+ * 네이버 증권 뉴스 수집 (현재 비활성화)
+ * 네이버에서 RSS 서비스를 종료하여 비활성화됨
  */
 export async function fetchNaverStockNews(): Promise<NewsItem[]> {
-  try {
-    console.log('📰 네이버 증권 뉴스 수집 시작...');
-    
-    // 네이버 증권 주요뉴스 RSS
-    const feed = await parser.parseURL(
-      'https://finance.naver.com/news/news_list.nhn?mode=LSS2D&section_id=101&section_id2=258&rss=1'
-    );
-    
-    const newsItems: NewsItem[] = feed.items.slice(0, 10).map(item => ({
-      title: item.title || '',
-      link: item.link || '',
-      pubDate: item.pubDate || new Date().toISOString(),
-      contentSnippet: item.contentSnippet,
-      source: 'Naver Stock'
-    }));
-    
-    console.log(`✅ ${newsItems.length}개의 네이버 뉴스를 수집했습니다.`);
-    return newsItems;
-    
-  } catch (error) {
-    console.error('⚠️ 네이버 증권 뉴스 수집 실패 (계속 진행):', error);
-    return []; // 실패해도 계속 진행
-  }
+  // 네이버 증권 RSS가 더 이상 작동하지 않음 (HTML 페이지 반환)
+  // 구글 뉴스가 이미 한국 금융 뉴스를 충분히 제공함
+  console.log('📰 네이버 증권 뉴스: RSS 서비스 종료로 건너뜀');
+  return [];
 }
 
 /**
@@ -95,16 +77,16 @@ export function filterAdNews(newsItems: NewsItem[]): NewsItem[] {
  * 모든 소스에서 뉴스 수집 (통합)
  */
 export async function collectAllNews(): Promise<NewsItem[]> {
-  const [googleNews, naverNews] = await Promise.all([
+  const [googleNews] = await Promise.all([
     fetchGoogleFinanceNews(),
-    fetchNaverStockNews()
+    // 추후 다른 소스 추가 가능
   ]);
-  
-  const allNews = [...googleNews, ...naverNews];
+
+  const allNews = [...googleNews];
   const filteredNews = filterAdNews(allNews);
-  
+
   console.log(`\n📊 총 ${allNews.length}개 수집 → 필터링 후 ${filteredNews.length}개\n`);
-  
+
   return filteredNews;
 }
 
