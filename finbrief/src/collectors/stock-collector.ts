@@ -1,5 +1,5 @@
 import yahooFinance from 'yahoo-finance2';
-import { normalizeKoreanSymbol, type SymbolValidationResult } from '../utils/korean-stock-symbols.js';
+import { normalizeKoreanSymbol, type SymbolValidationResult } from '../utils/korean-stock-symbols';
 
 export interface StockQuote {
   symbol: string;

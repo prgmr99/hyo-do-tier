@@ -1,5 +1,5 @@
 import { RSI, MACD, BollingerBands, SMA } from 'technicalindicators';
-import type { HistoricalData } from '../collectors/stock-collector.js';
+import type { HistoricalData } from '../collectors/stock-collector';
 
 export interface TechnicalIndicators {
   rsi: number | null;

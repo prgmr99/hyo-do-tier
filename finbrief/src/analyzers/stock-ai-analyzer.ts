@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import type { StockQuote } from '../collectors/stock-collector.js';
-import type { TechnicalIndicators } from './technical-analyzer.js';
+import type { StockQuote } from '../collectors/stock-collector';
+import type { TechnicalIndicators } from './technical-analyzer';
 
 export interface AIAnalysisResult {
   signal: 'buy' | 'hold' | 'sell';

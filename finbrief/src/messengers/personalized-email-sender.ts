@@ -1,9 +1,9 @@
 import { Resend } from 'resend';
 import { createClient } from '@supabase/supabase-js';
-import { getStockQuote, getHistoricalData } from '../collectors/stock-collector.js';
-import { calculateTechnicalIndicators } from '../analyzers/technical-analyzer.js';
-import { generateBriefAnalysis } from '../analyzers/stock-ai-analyzer.js';
-import type { AnalysisResult } from '../types/news.types.js';
+import { getStockQuote, getHistoricalData } from '../collectors/stock-collector';
+import { calculateTechnicalIndicators } from '../analyzers/technical-analyzer';
+import { generateBriefAnalysis } from '../analyzers/stock-ai-analyzer';
+import type { AnalysisResult } from '../types/news.types';
 
 const BATCH_SIZE = 10;
 const BATCH_DELAY_MS = 1000;
