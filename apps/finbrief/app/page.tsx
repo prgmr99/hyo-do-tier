@@ -6,7 +6,10 @@ import { Zap, Brain, Target, ChevronDown, ArrowRight, Send } from 'lucide-react'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/landing';
 import { LiquidEther } from '@/components/backgrounds';
 import BriefingSample from '@/components/BriefingSample';
+import Header from '@/components/Header';
 import './finbrief.css';
+
+const LIQUID_ETHER_COLORS = ['#0077B6', '#00B4D8', '#90E0EF'];
 
 export default function FinBriefPage() {
   return (
@@ -14,7 +17,7 @@ export default function FinBriefPage() {
       {/* Fixed Background */}
       <div className="fixed inset-0 -z-10">
         <LiquidEther
-          colors={['#0077B6', '#00B4D8', '#90E0EF']}
+          colors={LIQUID_ETHER_COLORS}
           resolution={0.5}
           autoDemo={true}
           autoSpeed={0.3}
@@ -25,6 +28,7 @@ export default function FinBriefPage() {
         />
       </div>
 
+      <Header />
       <HeroSection />
       <ValueProposition />
       <FeatureShowcase />
